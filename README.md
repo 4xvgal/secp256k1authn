@@ -1,4 +1,3 @@
-````markdown
 # secp256k1authn
 
 `secp256k1authn` is a TypeScript library for **WebAuthn-style public-key authentication using secp256k1 and HD keys (BIP39/BIP32)**.
