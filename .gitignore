@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+
+# Logs & coverage
+*.log
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+.DS_Store
