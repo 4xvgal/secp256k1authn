@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
+
 import {
-    fromMnemonic,
-    signChallenge,
-    verifyChallengeSignature,
+  fromMnemonic,
+  signChallenge,
+  verifyChallengeSignature,
 } from "../src/index.js";
 
 const TEST_MNEMONIC =
@@ -22,20 +23,16 @@ describe("sign/verify flow", () => {
 
     const challengeBytes = new TextEncoder().encode(TEST_MESSAGE);
     const signature = signChallenge(privKey, challengeBytes);
-    console.log("signature:", Buffer.from(signature).toString("hex"));
 
-    const ok = await verifyChallengeSignature(pubKey, challengeBytes, signature);
-    console.log("verification result:", ok);
+    const ok = verifyChallengeSignature(pubKey, challengeBytes, signature);
     expect(ok).toBe(true);
 
     const tampered = new Uint8Array(signature);
     if (tampered.length > 0) {
       tampered.set([tampered[0] ^ 0xff], 0);
-      console.log("tampered signature:", Buffer.from(tampered).toString("hex"));
     }
 
-    const fail = await verifyChallengeSignature(pubKey, challengeBytes, tampered);
-    console.log("verification result (tampered):", fail);
+    const fail = verifyChallengeSignature(pubKey, challengeBytes, tampered);
     expect(fail).toBe(false);
   });
 });
