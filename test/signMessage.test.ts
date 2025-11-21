@@ -28,9 +28,7 @@ describe("sign/verify flow", () => {
     expect(ok).toBe(true);
 
     const tampered = new Uint8Array(signature);
-    if (tampered.length > 0) {
-      tampered.set([tampered[0] ^ 0xff], 0);
-    }
+    tampered.set([tampered[0] ^ 0xff], 0);
 
     const fail = verifyChallengeSignature(pubKey, challengeBytes, tampered);
     expect(fail).toBe(false);

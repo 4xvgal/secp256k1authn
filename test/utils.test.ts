@@ -26,7 +26,7 @@ describe("makeAuthPath", () => {
     const rpIndex = 123456789;
     const { path, indices } = makeAuthPath(rpIndex, 2, 5, 1);
 
-    expect(path).toBe("m/128273'/1'/2'/123456789'/5");
+    expect(path).toBe("m/128273'/1'/2'/123456789'/5'");
     expect(indices).toHaveLength(5);
     expect(indices[0]).toBeGreaterThanOrEqual(0x80000000);
     expect(indices[3]).toBe(rpIndex + 0x80000000);

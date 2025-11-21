@@ -1,6 +1,5 @@
-import { describe, expect, it } from "vitest";
-
 import { fromMnemonic } from "../src/index.js";
+import { expect, it, describe } from "bun:test";
 
 const TEST_MNEMONIC =
   "unaware nerve cat uncle fly among hobby hedgehog favorite zoo runway direct";
