@@ -16,7 +16,7 @@ export function makeAuthPath(
   rpIndex: number,
   deviceId = 0,
   keyIndex = 0,
-  version = DEFAULT_AUTH_VERSION,
+  version: number = DEFAULT_AUTH_VERSION,
 ): AuthPathResult {
   const purposeH = PURPOSE_AUTH + HARDENED_OFFSET;
   const versionH = version + HARDENED_OFFSET;
@@ -25,7 +25,7 @@ export function makeAuthPath(
 
   const indices = [purposeH, versionH, deviceH, rpH, keyIndex];
   const path =
-    `m/${PURPOSE_AUTH}'/${version}'/${deviceId}'/${rpIndex}'/${keyIndex}`;
+    `m/${PURPOSE_AUTH}'/${version}'/${deviceId}'/${rpIndex}'/${keyIndex}'`;
 
   return { path, indices };
 }

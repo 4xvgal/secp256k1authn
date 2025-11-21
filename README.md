@@ -3,7 +3,7 @@
 TypeScript toolkit for WebAuthn-style authentication that uses BIP39/BIP32 HD keys and the secp256k1 curve. One mnemonic → per-RP keys → challenge signatures that any backend can verify.
 
 ## Highlights
-- **HD derivation**: `m/128273'/version'/deviceId'/rpIndex'/keyIndex` with `rpIndex = first31bits(SHA256(rpId))`.
+- **HD derivation**: `m/128273'/version'/deviceId'/rpIndex'/keyIndex'` with `rpIndex = first31bits(SHA256(rpId))`.
 - **Software authenticator**: works entirely in browser/Node, no hardware key.
 - **Simple API**: `fromMnemonic`, `signChallenge`, `verifyChallengeSignature`, plus helper constants/types.
 
@@ -15,11 +15,10 @@ TypeScript toolkit for WebAuthn-style authentication that uses BIP39/BIP32 HD ke
 
 ### Derivation details
 ```
-m / PURPOSE_AUTH' / version' / deviceId' / rpIndex' / keyIndex
+m / PURPOSE_AUTH' / version' / deviceId' / rpIndex' / keyIndex'
 PURPOSE_AUTH = 128273 (🔑)
 rpIndex = first_31_bits(SHA256(rpId))
 ```
-All nodes except `keyIndex` are hardened; the final child is non-hardened to allow rotation.
 
 ## API
 ```ts
